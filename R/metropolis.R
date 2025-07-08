@@ -3,7 +3,7 @@ calculate_acceptance_probability <- function(x_prime, x_n, target_density) {
   return(min(1, ratio))  
 }
 
-metropolis <- function(n = 1000, x0 = 0, target_density) {
+metropolis <- function(n = 10000, x0 = 0, target_density) {
   x_n = x0
   
   samples <- numeric()

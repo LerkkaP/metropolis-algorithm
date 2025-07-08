@@ -1,7 +1,8 @@
 trace_plot <- function(samples) {
-  plot(seq(1:1000),  type = "l", col="blue" ,samples)
+  plot(seq(samples),  type = "l", col="dodgerblue" ,samples, xlab = "Iteration", ylab = "Sample")
 }
 
-histogram <- function(samples_accepted, prob = TRUE) {
-  hist(samples_accepted)
+histogram <- function(samples_accepted) {
+  hist(samples_accepted, col="dodgerblue", prob = TRUE)
+  curve(dnorm(x), add = TRUE, col = "red", lwd = 2)
 }
