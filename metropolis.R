@@ -1,13 +1,9 @@
-proportional_density <- function(x) {
-  return(exp(-(x**2) / 2))
-}
-
-calculate_acceptance_probability <- function(x_prime, x_n) {
-  ratio <- proportional_density(x_prime) / proportional_density(x_n)
+calculate_acceptance_probability <- function(x_prime, x_n, target_density) {
+  ratio <- target_density(x_prime) / target_density(x_n)
   return(min(1, ratio))  
 }
 
-metropolis <- function(n = 1000, x0 = 0) {
+metropolis <- function(n = 1000, x0 = 0, target_density) {
   x_n = x0
   
   samples <- numeric()
@@ -15,7 +11,7 @@ metropolis <- function(n = 1000, x0 = 0) {
   
   for (i in 1:n) {
     x_prime <- rnorm(1, x_n, 1)
-    acceptance_probability <- calculate_acceptance_probability(x_prime, x_n)
+    acceptance_probability <- calculate_acceptance_probability(x_prime, x_n, target_density)
     u <- runif(1, 0, 1)
     if (u <= acceptance_probability) {
       x_n <- x_prime
