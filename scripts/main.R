@@ -1,8 +1,9 @@
 source("R/target_densities.R")
 source("R/plots.R")
+source("R/proposals.R")
 source("R/metropolis.R")
 
-result <- metropolis(target_density = unnormalized_gaussian)
+result <- metropolis(target_density = unnormalized_gaussian, proposal = gaussian_proposal)
 
 samples <- result$samples
 samples_accepted <- result$samples_accepted
