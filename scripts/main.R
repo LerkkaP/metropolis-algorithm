@@ -10,7 +10,7 @@ samples_accepted <- result$samples_accepted
 
 par(mfrow = c(1, 2))
 trace_plot(samples)
-histogram(samples_accepted)
+histogram(samples_accepted, gaussian)
 par(mfrow = c(1, 1))
 
 
